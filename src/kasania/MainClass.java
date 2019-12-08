@@ -1,7 +1,5 @@
 package kasania;
 
-import pllapallpal.Logic;
-
 public class MainClass {
 
     public static void main(String[] args) {

@@ -1,11 +1,10 @@
 package pllapallpal;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Logic {
 
-    private Scanner fileInput;
+    private BufferedReader fileInput;
 
     private final String PATH = "res/data.txt";
     private String data;
@@ -16,14 +15,21 @@ public class Logic {
 
     public void readFile() {
 
+        // read the file from the path
         try {
-            fileInput = new Scanner(new File(PATH));
+            fileInput = new BufferedReader(new FileReader(PATH));
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        while (fileInput.hasNextLine()) {
-            data = data + fileInput.nextLine() + "\n";
+        // get the data from the file
+        String currentLine;
+        try {
+            while ((currentLine = fileInput.readLine()) != null) {
+                data = data + currentLine + "\n";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
