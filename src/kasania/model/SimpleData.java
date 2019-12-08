@@ -10,8 +10,22 @@ public final class SimpleData {
         this.textFieldData = textFieldData;
     }
 
+    public SimpleData(String data){
+        String[] strings = data.split(":");
+        this.labelData = strings[0];
+        this.textFieldData = strings[1];
+    }
+
+    public String getLabelData(){
+        return labelData;
+    }
+
+    public String getTextFieldData(){
+        return textFieldData;
+    }
+
     @Override
     public String toString() {
-        return labelData + textFieldData;
+        return labelData +":"+ textFieldData;
     }
 }
