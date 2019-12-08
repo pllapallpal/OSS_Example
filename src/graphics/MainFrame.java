@@ -24,7 +24,6 @@ public class MainFrame {
     private JButton readButton;
 
     private FileIO fileIO;
-    private SimpleData simpleData;
     private String labelText;
     private String textFieldText;
     public MainFrame(){
@@ -37,24 +36,20 @@ public class MainFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(readButton);
 
+
         //ActionEvent
         readButton.addActionListener(event -> {
             SimpleData input = fileIO.getData();
-            mainPanel.getLabel().setText(input.getLabelData());
-            mainPanel.getTextField().setText(input.getTextFieldData());
+            mainPanel.setLabelText(input.getLabelData());
+            mainPanel.setTextField(input.getTextFieldData());
         });
         saveButton.addActionListener(event -> {
-            labelText = mainPanel.getLabel().getText();
-            textFieldText = mainPanel.getTextField().getText();
-            simpleData = new SimpleData(labelText, textFieldText);
+            labelText = mainPanel.getLabelText();
+            textFieldText = mainPanel.getTextFieldText();
+            SimpleData simpleData = new SimpleData(labelText, textFieldText);
             fileIO.saveData(simpleData);
         });
-        mainPanel.getTextField().addActionListener(event ->{
-            labelText = mainPanel.getLabel().getText();
-            textFieldText = mainPanel.getTextField().getText();
-            simpleData = new SimpleData(labelText, textFieldText);
-            fileIO.saveData(simpleData);
-        });
+
 
         //Add
         contentPane.add(buttonPanel, BorderLayout.NORTH);

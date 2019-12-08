@@ -1,5 +1,8 @@
 package graphics.panels;
 
+import kasania.model.SimpleData;
+import logic.FileIO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,36 +10,34 @@ public class MainPanel implements Cloneable{
     private JLabel label;
     private JTextField textField;
     private JPanel contentPanel;
-    private String input;
-
+    private FileIO fileIO;
     public MainPanel(){
-        //init();
+        fileIO = new FileIO();
         contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
-        label = new JLabel("label");
+        label = new JLabel();
         textField = new JTextField(30);
 
         textField.addActionListener(event -> {
-            input = textField.getText();
-            label.setText(input);
-            textField.setText("");
+            SimpleData simpleData = new SimpleData(label.getText(), textField.getText());
+            fileIO.saveData(simpleData);
         });
         contentPanel.add(label, BorderLayout.CENTER);
         contentPanel.add(textField, BorderLayout.SOUTH);
     }
-
-    private void init(){
-        label = new JLabel("label is here");
-        textField = new JTextField();
-        contentPanel = new JPanel();
-    }
     public JPanel getContentPanel(){
         return contentPanel;
     }
-    public JLabel getLabel(){
-        return label;
+    public void setLabelText(String text){
+        label.setText(text);
     }
-    public JTextField getTextField(){
-        return textField;
+    public void setTextField(String text){
+        textField.setText(text);
+    }
+    public String getLabelText(){
+        return label.getText();
+    }
+    public String getTextFieldText(){
+        return textField.getText();
     }
 }
