@@ -26,7 +26,6 @@ public class MainFrame {
     public MainFrame(){
         init();
 
-        contentPane = mainFrame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         componentPanel.setLayout(new BorderLayout());
 
@@ -34,16 +33,22 @@ public class MainFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(readButton);
 
+        //ActionEvent
         readButton.addActionListener(event -> {
 
         });
         saveButton.addActionListener(event -> {
 
         });
+        mainPanel.getTextField().addActionListener(event ->{
 
+        });
+
+        //Add
         contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(componentPanel, BorderLayout.CENTER);
 
+        //frameSetting
         mainFrame.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +61,7 @@ public class MainFrame {
         buttonPanel = new JPanel();
         saveButton = new JButton("Save");
         readButton = new JButton("Load");
-
+        contentPane = mainFrame.getContentPane();
     }
 
 }
