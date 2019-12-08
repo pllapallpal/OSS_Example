@@ -4,31 +4,23 @@ import java.io.*;
 
 public class Logic {
 
-    private BufferedReader fileInput;
-
     private final String PATH = "res/data.txt";
     private String data;
 
     public Logic() {
-        fileInput = null;
+        data = null;
     }
 
     public void readFile() {
 
-        // read the file from the path
-        try {
-            fileInput = new BufferedReader(new FileReader(PATH));
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        try (BufferedReader reader = new BufferedReader(new FileReader(PATH))) {
 
-        // get the data from the file
-        String currentLine;
-        try {
-            while ((currentLine = fileInput.readLine()) != null) {
-                data = data + currentLine + "\n";
-            }
+            reader.lines().forEach(str -> {
+                data = data + str + "\n";
+            });
+
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }
