@@ -3,6 +3,7 @@ package graphics;
 
 import graphics.panels.MainPanel;
 import kasania.model.SimpleData;
+import logic.FileIO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,10 @@ public class MainFrame {
     private JButton saveButton;
     private JButton readButton;
 
-
+    private FileIO fileIO;
+    private SimpleData simpleData;
+    private String labelText;
+    private String textFieldText;
     public MainFrame(){
         init();
 
@@ -35,13 +39,21 @@ public class MainFrame {
 
         //ActionEvent
         readButton.addActionListener(event -> {
-
+            SimpleData input = fileIO.getData();
+            mainPanel.getLabel().setText(input.getLabelData());
+            mainPanel.getTextField().setText(input.getTextFieldData());
         });
         saveButton.addActionListener(event -> {
-
+            labelText = mainPanel.getLabel().getText();
+            textFieldText = mainPanel.getTextField().getText();
+            simpleData = new SimpleData(labelText, textFieldText);
+            fileIO.saveData(simpleData);
         });
         mainPanel.getTextField().addActionListener(event ->{
-
+            labelText = mainPanel.getLabel().getText();
+            textFieldText = mainPanel.getTextField().getText();
+            simpleData = new SimpleData(labelText, textFieldText);
+            fileIO.saveData(simpleData);
         });
 
         //Add
@@ -62,6 +74,7 @@ public class MainFrame {
         saveButton = new JButton("Save");
         readButton = new JButton("Load");
         contentPane = mainFrame.getContentPane();
+        fileIO = new FileIO();
     }
 
 }

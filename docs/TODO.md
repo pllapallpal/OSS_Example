@@ -2,9 +2,9 @@
 - 모든 GUI 관련 클래스는 graphics 패키지 내에 존재해야 합니다.
 - JLabel, JTextField를 MainFrame 위에 배치하세요.
 - MainFrame 위에 별도의 JButton을 2개 추가하세요. **(Read, Save)**
-- logic 패키지에 존재하는 Logic 클래스의 인스턴스(logic)를 field로 선언하고 생성하세요.
-- Read 버튼을 누르는 경우 `logic.getData()`를 호출하여 SimpleData를 반환 받고, JTextField와 JLabel의 값을 적절하게 변경하세요.
-- Save 버튼을 누르는 경우 `logic.saveData()`를 호출하여 적절한 작업이 일어나게 해주세요. 구현사항은 [**SimpleData**](/src/kasania/model/SimpleData.java)를 참고하세요.
+- logic 패키지에 존재하는 FileIO 클래스의 인스턴스(fileIO)를 field로 선언하고 생성하세요.
+- Read 버튼을 누르는 경우 `fileIO.getData()`를 호출하여 SimpleData를 반환 받고, JTextField와 JLabel의 값을 적절하게 변경하세요.
+- Save 버튼을 누르는 경우 `fileIO.saveData()`를 호출하여 적절한 작업이 일어나게 해주세요. 구현사항은 [**SimpleData**](/src/kasania/model/SimpleData.java), [**FileIO**](/src/logic/FileIO.java) 를 참고하세요.
 - JTextField의 Action은 Save 버튼과 동일합니다.
 - ~~JTextField와 JButton의 이벤트 리스너는 같은 기능을 해야합니다.~~
 - ~~각 컴포넌트에 바인딩해야할 이벤트는 차후 제공될 예정입니다.~~
