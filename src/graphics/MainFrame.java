@@ -2,6 +2,7 @@ package graphics;
 
 
 import graphics.panels.MainPanel;
+import kasania.model.SimpleData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,20 +17,31 @@ public class MainFrame {
 
     private Container contentPane;
     private JPanel componentPanel;
+    private JPanel buttonPanel;
 
-    private JButton button1;
-    private JButton button2;
+    private JButton saveButton;
+    private JButton readButton;
+
 
     public MainFrame(){
         init();
 
         contentPane = mainFrame.getContentPane();
-
         contentPane.setLayout(new BorderLayout());
-        componentPanel.setLayout(new GridLayout(1,4));
+        componentPanel.setLayout(new BorderLayout());
 
         componentPanel.add(mainPanel.getContentPanel());
+        buttonPanel.add(saveButton);
+        buttonPanel.add(readButton);
 
+        readButton.addActionListener(event -> {
+
+        });
+        saveButton.addActionListener(event -> {
+
+        });
+
+        contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(componentPanel, BorderLayout.CENTER);
 
         mainFrame.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -41,6 +53,10 @@ public class MainFrame {
         mainFrame = new JFrame();
         mainPanel = new MainPanel();
         componentPanel = new JPanel();
+        buttonPanel = new JPanel();
+        saveButton = new JButton("Save");
+        readButton = new JButton("Load");
+
     }
 
 }
